@@ -1,0 +1,105 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+#current-display, #previous-display {
+    word-wrap: break-word;
+    font-family: sans-serif;
+    text-align: right;
+    padding: 10px;
+}
+
+#previous-display {
+    height: 38px;
+}
+
+#current-display {
+    font-size: 36px;
+    min-height: 62px;
+}
+
+.buttons {
+    height: 400px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+button {
+    align-items: center;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+    display: inline-flex;
+    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1.25;
+    margin: 0;
+    min-height: 3rem;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    text-decoration: none;
+    transition: all 150ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: auto;
+}
+
+button:hover {
+    background-color: #FAFAFAFF;
+}
+
+button:active {
+    background-color: #F0F0F1;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+    color: rgba(0, 0, 0, 0.65);
+    transform: translateY(0);
+}
+
+#equal{
+    background-color: #0078ff;
+    color: #FFFFFF;
+}
+
+#equal:hover{
+    background-color: #006fee;
+}
+
+#equal:active{
+    background-color: #0060d2;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+    transform: translateY(0);
+}
+
+#clean-all {
+    grid-column: 3 / 5;
+}
+
+#clean-entry {
+    grid-column: 1 / 3;
+}
+

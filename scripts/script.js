@@ -1,0 +1,99 @@
+class Calculator{
+    constructor(previousDisplayTextElement, currentDisplayTextElement) {
+        this.previousDisplayTextElement = previousDisplayTextElement;
+        this.currentDisplayTextElement = currentDisplayTextElement;
+        this.clear();
+    }
+
+    clear(){
+        this.currentOperand = '';
+        this.previousOperand = '';
+        this.operation = undefined;
+    }
+
+    delete(){
+
+    }
+
+    appendNumber(number){
+        if (number === '.' && this.currentOperand.includes('.')) return;
+        this.currentOperand = this.currentOperand.toString() + number.toString();
+    }
+
+    chooseOperation(operation){
+        if (this.currentOperand === '') return;
+        if (this.previousOperand !== ''){
+            this.compute();
+        }
+        this.operation = operation;
+        this.previousOperand = this.currentOperand;
+        this.previousOperand = this.previousOperand.toString() + ' ' + operation.toString();
+        this.currentOperand = '';
+    }
+
+    compute(){
+        let computation;
+        const prev = parseFloat(this.previousOperand);
+        const current = parseFloat(this.currentOperand);
+        if (isNaN(prev) || isNaN(current)) return;
+        switch (this.operation){
+            case '+':
+                computation = prev + current;
+                break;
+            case '-':
+                computation = prev - current;
+                break;
+            case '÷':
+                computation = prev / current;
+                break;
+            case '×':
+                computation = prev * current;
+                break;
+            default:
+                return;
+        }
+        this.currentOperand = computation;
+        this.operation = undefined;
+        this.previousOperand = '';
+    }
+
+    updateDisplay(){
+        this.currentDisplayTextElement.innerText = this.currentOperand;
+        this.previousDisplayTextElement.innerText = this.previousOperand;
+    }
+}
+
+
+const numberButtons = document.querySelectorAll('[data-number]')
+const operationButtons = document.querySelectorAll('[data-operation]')
+const equalsButton = document.getElementById('equal')
+const cleanEntryButton = document.getElementById('clean-entry')
+const cleanAllButon = document.getElementById('clean-all');
+const previousDisplayTextElement = document.getElementById('previous-display');
+const currentDisplayTextElement = document.getElementById('current-display');
+
+const calculator = new Calculator(previousDisplayTextElement, currentDisplayTextElement);
+
+numberButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.appendNumber(button.innerText);
+        calculator.updateDisplay();
+    })
+})
+
+operationButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.chooseOperation(button.innerText);
+        calculator.updateDisplay();
+    })
+})
+
+equalsButton.addEventListener('click', button => {
+    calculator.compute();
+    calculator.updateDisplay();
+})
+
+cleanAllButon.addEventListener('click', button => {
+    calculator.clear();
+    calculator.updateDisplay();
+})
