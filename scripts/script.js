@@ -18,6 +18,7 @@ class Calculator{
     appendNumber(number){
         if (number === '.' && this.currentOperand.includes('.')) return;
         this.currentOperand = this.currentOperand.toString() + number.toString();
+
     }
 
     chooseOperation(operation){
@@ -100,5 +101,34 @@ cleanAllButon.addEventListener('click', button => {
 
 cleanEntryButton.addEventListener('click', button => {
     calculator.delete();
+    calculator.updateDisplay();
+})
+
+document.addEventListener('keypress', button => {
+    if (!isNaN(button.key)){
+        calculator.appendNumber(button.key);
+    }
+    else {
+        switch (button.key) {
+            case '/':
+                calculator.chooseOperation('÷');
+                break;
+            case '*':
+                calculator.chooseOperation('×');
+                break;
+            case '+':
+                calculator.chooseOperation('+');
+                break;
+            case '-':
+                calculator.chooseOperation('-');
+                break;
+            case 'Enter' || '=':
+                calculator.compute();
+                break;
+            case '.':
+                calculator.appendNumber('.');
+                break;
+        }
+    }
     calculator.updateDisplay();
 })
