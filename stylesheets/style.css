@@ -1,13 +1,14 @@
 body, html {
     height: 100%;
     margin: 0;
+    font-family: 'Montserrat', sans-serif;
 }
 
 main {
     display: flex;
     justify-content: center;
-    height: 100%;
-    align-items: center;
+    height: 85%;
+    align-items: flex-end;
 }
 
 .container {
@@ -19,6 +20,7 @@ main {
 }
 
 #current-display, #previous-display {
+    transition: transform 1s;
     word-wrap: break-word;
     font-family: sans-serif;
     text-align: right;
@@ -26,7 +28,8 @@ main {
 }
 
 #previous-display {
-    height: 38px;
+    font-size: 24px;
+    min-height: 38px;
 }
 
 #current-display {
@@ -101,5 +104,23 @@ button:active {
 
 #clean-entry {
     grid-column: 1 / 3;
+}
+
+.fa-github {
+    color: #000000;
+    font-size: 24px;
+    margin-left: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.fa-github:hover {
+    transform: rotate(360deg) scale(1.2);
+}
+
+.footer {
+    align-items: center;
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
 }
 
